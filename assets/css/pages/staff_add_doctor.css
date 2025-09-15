@@ -1,0 +1,2 @@
+.sadd form { display: grid; gap: 10px; max-width: 520px; }
+.sadd .row { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }

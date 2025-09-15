@@ -1,0 +1,31 @@
+<?php 
+// Include the database connection file
+require __DIR__ . '/backend/db.php'; 
+?>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Clinic Booking — Connection Test</title>
+</head>
+<body>
+    <h1>Clinic Booking</h1>
+    <p>PHP is running. Now testing MySQL connection…</p>
+    <?php
+        /*
+        try {
+            // Execute a query to count the number of users in the database
+            $stmt = $pdo->query("SELECT COUNT(*) AS c FROM users");
+            // Fetch the count result
+            $count = $stmt->fetch()['c'];
+            // Display success message with user count
+            echo "<p style='color:green;'>✅ Connected to MySQL. users count = <b>{$count}</b></p>";
+        } catch (Throwable $e) {
+            // Display error message if query fails
+            echo "<p style='color:red;'>❌ Query failed: " . htmlspecialchars($e->getMessage()) . "</p>";
+        }
+        */
+    ?>
+</body>
+</html>
+

@@ -1,0 +1,2 @@
+.sappt .toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+.sappt table td.status { font-weight: 600; }

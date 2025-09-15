@@ -1,0 +1,4 @@
+.pdash { display: grid; gap: 16px; }
+.pdash .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.pdash .quick-actions a { display: block; margin-bottom: 10px; }
+.pdash table td.status { font-weight: 600; }

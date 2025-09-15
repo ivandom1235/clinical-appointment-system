@@ -1,0 +1,4 @@
+.dsched table { width: 100%; }
+.dsched th, .dsched td { padding: 8px; }
+.dsched input[type="time"], .dsched input[type="number"] { width: 110px; }
+.dsched .notes { margin-top: 8px; opacity: 0.85; }
