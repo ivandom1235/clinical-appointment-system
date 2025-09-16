@@ -1,6 +1,6 @@
 <?php
 
-$pageCss = '/clinic-booking/assets/css/pages/doctor_schedule.css';
+$pageCss = '/assets/css/pages/doctor_schedule.css';
 require_once __DIR__ . '/../backend/db.php';
 require_once __DIR__ . '/../backend/auth.php';
 require_role('staff');

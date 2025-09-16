@@ -1,53 +1,72 @@
-<?
-$pageCss = '/clinic-booking/assets/css/pages/doctor_dashboard.css';
+<?php
+$pageCss = '/assets/css/pages/doctor_dashboard.css';
 require_once __DIR__ . '/../backend/db.php';
 require_once __DIR__ . '/../backend/auth.php';
 require_role('doctor');
 
-/* find doctor_id for this user */
-$uid = $_SESSION['uid'];
-$stmt = $pdo->prepare("SELECT id FROM doctors WHERE user_id=?");
-$stmt->execute([$uid]);
-$doctor_id = $stmt->fetchColumn();
-if (!$doctor_id) { http_response_code(403); exit('No doctor profile'); }
-
-/* Today’s appointments */
+// Initialize variables for safety
 $today = date('Y-m-d');
-$qToday = $pdo->prepare("
-  SELECT a.*, u.name AS patient_name
-  FROM appointments a
-  JOIN patients p ON p.id = a.patient_id
-  JOIN users u ON u.id = p.user_id
-  WHERE a.doctor_id=? AND a.appt_date=? 
-  ORDER BY a.appt_time
-");
-$qToday->execute([$doctor_id, $today]);
-$todayList = $qToday->fetchAll();
+$todayList = [];
+$upcomingList = [];
+$error = '';
 
-/* Upcoming (from tomorrow) */
-$qUpcoming = $pdo->prepare("
-  SELECT a.*, u.name AS patient_name
-  FROM appointments a
-  JOIN patients p ON p.id = a.patient_id
-  JOIN users u ON u.id = p.user_id
-  WHERE a.doctor_id=? AND a.status='booked'
-    AND a.appt_date > CURDATE()
-  ORDER BY a.appt_date, a.appt_time
-  LIMIT 25
-");
-$qUpcoming->execute([$doctor_id]);
-$upcomingList = $qUpcoming->fetchAll();
+// Find doctor_id for this user
+$uid = $_SESSION['uid'] ?? null;
+$doctor_id = null;
+
+if ($uid) {
+    $stmt = $pdo->prepare("SELECT id FROM doctors WHERE user_id=?");
+    $stmt->execute([$uid]);
+    $doctor_id = $stmt->fetchColumn();
+
+    if ($doctor_id) {
+        // Today’s appointments
+        $qToday = $pdo->prepare("
+          SELECT a.*, u.name AS patient_name
+          FROM appointments a
+          JOIN patients p ON p.id = a.patient_id
+          JOIN users u ON u.id = p.user_id
+          WHERE a.doctor_id=? AND a.appt_date=? 
+          ORDER BY a.appt_time
+        ");
+        $qToday->execute([$doctor_id, $today]);
+        $todayList = $qToday->fetchAll();
+
+        // Upcoming (from tomorrow)
+        $qUpcoming = $pdo->prepare("
+          SELECT a.*, u.name AS patient_name
+          FROM appointments a
+          JOIN patients p ON p.id = a.patient_id
+          JOIN users u ON u.id = p.user_id
+          WHERE a.doctor_id=? AND a.status='booked'
+            AND a.appt_date > CURDATE()
+          ORDER BY a.appt_date, a.appt_time
+          LIMIT 25
+        ");
+        $qUpcoming->execute([$doctor_id]);
+        $upcomingList = $qUpcoming->fetchAll();
+    } else {
+        $error = 'No doctor profile found for this user.';
+    }
+} else {
+    $error = 'Session error: user not logged in.';
+}
 
 require_once __DIR__ . '/../partials/header.php';
 ?>
-<section class="card">
+
+<section class=" card">
   <h2>Doctor Dashboard</h2>
   <?php if (!empty($_GET['updated'])): ?>
     <p style="color:#22c55e;">✅ Status updated.</p>
   <?php endif; ?>
 
-  <h3>Today (<?= htmlspecialchars($today) ?>)</h3>
-  <?php if (!$todayList): ?>
+  <?php if ($error): ?>
+    <p style="color:#d32f2f;"><b>Error:</b> <?= htmlspecialchars($error) ?></p>
+  <?php endif; ?>
+
+  <h3>Today (<?= htmlspecialchars($today ?? '') ?>)</h3>
+  <?php if (empty($todayList)): ?>
     <p><em>No appointments today.</em></p>
   <?php else: ?>
     <table>
@@ -61,7 +80,7 @@ require_once __DIR__ . '/../partials/header.php';
             <td><?= htmlspecialchars($a['patient_name']) ?></td>
             <td><?= htmlspecialchars($a['status']) ?></td>
             <td>
-              <?php if ($a['status']==='booked'): ?>
+              <?php if ($a['status'] === 'booked'): ?>
                 <form method="POST" action="/backend/doctor_update_status.php" style="display:inline">
                   <input type="hidden" name="appointment_id" value="<?= (int)$a['id'] ?>">
                   <input type="hidden" name="status" value="completed">
@@ -83,9 +102,9 @@ require_once __DIR__ . '/../partials/header.php';
   <?php endif; ?>
 </section>
 
-<section class="card" style="margin-top:16px;">
+<section class="dsched card">
   <h3>Upcoming</h3>
-  <?php if (!$upcomingList): ?>
+  <?php if (empty($upcomingList)): ?>
     <p><em>No upcoming bookings.</em></p>
   <?php else: ?>
     <table>

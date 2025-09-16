@@ -10,7 +10,7 @@
   </div>
 </section>
 
-<?php require __DIR__ . '/partials/footer.php'; ?>
+<?php require __DIR__ . '/partials/footer.php'; ?> 
 
 <?php
 /**

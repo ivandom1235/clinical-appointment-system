@@ -4,7 +4,52 @@
   --text: #1c2331;
   --accent: #0097a7;
   --border: #d1d5db;
+  --success: #43a047;
+  --error: #e53935;
+  --warning: #fbc02d;
+  --info: #039be5;
 }
+
+/* Alerts */
+.alert {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.alert-success { background: #e8f5e9; color: var(--success); border: 1px solid var(--success); }
+.alert-error { background: #ffebee; color: var(--error); border: 1px solid var(--error); }
+.alert-warning { background: #fffde7; color: var(--warning); border: 1px solid var(--warning); }
+.alert-info { background: #e3f2fd; color: var(--info); border: 1px solid var(--info); }
+
+/* Form Elements */
+input, select, textarea {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  width: 100%;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Utility Classes */
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+.text-warning { color: var(--warning); }
+.text-info { color: var(--info); }
 
 * { box-sizing: border-box; margin:0; padding:0; }
 
@@ -52,3 +97,45 @@ nav a:hover { text-decoration: underline; }
 table{ width:100%; border-collapse:collapse; margin-top:12px; }
 th,td{ padding:8px 10px; border-bottom:1px solid var(--border); text-align:left; }
 th{ background:#eaf6f9; font-weight:600; }
+
+
+/* Header */
+.site-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 24px 0 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.site-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.site-header nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 7px 18px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus {
+  background: #007c91;
+  text-decoration: none;
+}
+
+/* Main container */

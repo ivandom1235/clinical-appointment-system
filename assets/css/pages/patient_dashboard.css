@@ -1,4 +1,107 @@
-.pdash { display: grid; gap: 16px; }
-.pdash .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.pdash .quick-actions a { display: block; margin-bottom: 10px; }
-.pdash table td.status { font-weight: 600; }
+/* Patient Dashboard CSS */
+
+body {
+    background: #f6f8fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background: #fff;
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 1.2rem;
+}
+
+.card a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.card a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+thead th {
+    background: #2563eb;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+tbody td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.98rem;
+    color: #374151;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody td:nth-child(4) {
+    font-weight: 500;
+    color: #22c55e;
+}
+
+@media (max-width: 700px) {
+    .card {
+        padding: 1rem;
+        max-width: 98vw;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    thead {
+        display: none;
+    }
+    tbody td {
+        position: relative;
+        padding-left: 50%;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    tbody td:before {
+        position: absolute;
+        left: 1rem;
+        top: 0.75rem;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: 500;
+        color: #6b7280;
+    }
+    tbody td:nth-child(1):before { content: "Date"; }
+    tbody td:nth-child(2):before { content: "Time"; }
+    tbody td:nth-child(3):before { content: "Doctor"; }
+    tbody td:nth-child(4):before { content: "Status"; }
+}

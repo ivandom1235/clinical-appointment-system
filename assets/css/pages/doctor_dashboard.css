@@ -1,4 +1,81 @@
-.ddash .section { margin-bottom: 16px; }
-.ddash table td.status { font-weight: 600; }
-.ddash .actions form { display: inline-block; margin-right: 8px; }
+.ddash .section {
+  margin-bottom: 16px;
+}
 
+.ddash table td.status {
+  font-weight: 600;
+}
+
+.ddash .actions form {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Doctor Dashboard Card */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px 20px;
+  margin-bottom: 24px;
+}
+
+.card h2, .card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.card th, .card td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.card th {
+  background: #eaf6f9;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.card td.status {
+  font-weight: 600;
+}
+
+.card form {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.card button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.card button:hover {
+  background: #007c91;
+}
+
+.card p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.card em {
+  color: #888;
+}

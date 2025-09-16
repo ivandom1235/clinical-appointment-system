@@ -1,4 +1,128 @@
-.dsched table { width: 100%; }
-.dsched th, .dsched td { padding: 8px; }
-.dsched input[type="time"], .dsched input[type="number"] { width: 110px; }
-.dsched .notes { margin-top: 8px; opacity: 0.85; }
+/* --- Doctor Dashboard Styling --- */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f6f8fa;
+  color: #253238;
+  margin: 0;
+  padding: 0;
+}
+.card {
+  max-width: 800px;
+  margin: 36px auto 20px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 3px 16px #0002;
+  padding: 32px 28px 24px 28px;
+  border: 1px solid #e1e5ea;
+}
+h2 {
+  margin-top: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #018fa6;
+  letter-spacing: 1px;
+}
+h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #16a34a;
+  letter-spacing: 0.3px;
+}
+p {
+  font-size: 1.06rem;
+  margin-top: 10px;
+}
+em {
+  color: #888;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fafbfc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e1e5ea;
+  font-size: 1rem;
+}
+th {
+  background: #eaf6f9;
+  color: #018fa6;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e1e5ea;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status colors */
+td:nth-child(3), td:nth-child(4) {
+  font-weight: 600;
+}
+td:contains('booked'), td.status-booked { color: #0288d1; }
+td:contains('completed'), td.status-completed { color: #22c55e; }
+td:contains('no_show'), td.status-no_show { color: #d32f2f; }
+
+/* Action buttons */
+button, .btn {
+  background: #0097a7;
+  color: #fff;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px #0001;
+  transition: background 0.17s;
+}
+button:hover, .btn:hover {
+  background: #007c91;
+}
+form[method="POST"] {
+  display: inline;
+}
+
+/* Alert/Success/Error messages */
+p[style*="#22c55e"] { /* green success */
+  background: #eafcf4;
+  border: 1px solid #a7f3d0;
+  color: #22c55e;
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin-top: 12px;
+}
+p[style*="#d32f2f"] { /* red error */
+  background: #fff0f2;
+  border: 1px solid #fecdd3;
+  color: #d32f2f;
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin-top: 12px;
+}
+
+.dsched.card {
+  margin-top: 36px;
+}
+
+@media (max-width: 700px) {
+  .card, .dsched.card {
+    padding: 13px 2vw 18px 2vw;
+    max-width: 98vw;
+    font-size: 0.96rem;
+  }
+  th, td {
+    padding: 9px 6px;
+    font-size: 0.97rem;
+  }
+  h2 { font-size: 1.22rem; }
+  h3 { font-size: 1.07rem; }
+}

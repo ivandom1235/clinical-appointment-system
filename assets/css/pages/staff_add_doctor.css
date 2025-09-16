@@ -1,2 +1,121 @@
-.sadd form { display: grid; gap: 10px; max-width: 520px; }
-.sadd .row { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f6f8fa;
+  color: #232b2b;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  max-width: 540px;
+  margin: 44px auto 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 3px 16px #0097a720;
+  padding: 36px 32px 30px 32px;
+  border: 1px solid #e1e5ea;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.45rem;
+  color: #0097a7;
+  font-weight: 700;
+  margin-bottom: 22px;
+  letter-spacing: 0.7px;
+}
+
+form {
+  display: grid;
+  gap: 15px;
+  max-width: 420px;
+}
+
+label {
+  font-weight: 500;
+  color: #232b2b;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3px;
+  font-size: 1.06rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  margin-top: 6px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  border: 1.2px solid #b5dae6;
+  background: #f6faff;
+  font-size: 1.06rem;
+  transition: border 0.16s, background 0.14s;
+  resize: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border: 1.5px solid #0097a7;
+  background: #eaf6f9;
+  outline: none;
+}
+
+button[type="submit"] {
+  background: #0097a7;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 26px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: background 0.17s;
+  box-shadow: 0 2px 8px #0097a72a;
+}
+button[type="submit"]:hover {
+  background: #007c91;
+}
+
+a {
+  color: #0097a7;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.14s;
+  margin-left: 4px;
+}
+a:hover {
+  background: #eaf6f9;
+  color: #007c91;
+}
+
+/* Success/Error message styling */
+p[style*="#22c55e"] {
+  background: #eafcf4;
+  border: 1px solid #a7f3d0;
+  color: #22c55e !important;
+  border-radius: 7px;
+  padding: 10px 15px;
+  margin-bottom: 13px;
+}
+p[style*="#ef4444"] {
+  background: #fff0f2;
+  border: 1px solid #fecdd3;
+  color: #ef4444 !important;
+  border-radius: 7px;
+  padding: 10px 15px;
+  margin-bottom: 13px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    max-width: 97vw;
+    padding: 12px 3vw 18px 3vw;
+  }
+  form { max-width: 99vw; }
+}

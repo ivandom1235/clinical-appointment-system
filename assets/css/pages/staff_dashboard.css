@@ -1,0 +1,92 @@
+/* --- Admin/Staff Dashboard Styles --- */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f8fb;
+  margin: 0;
+  color: #253238;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 18px #0001;
+  padding: 32px 28px 20px 28px;
+  margin-bottom: 30px;
+  border: 1px solid #e1e5ea;
+}
+section.card {
+  max-width: 850px;
+  margin: 44px auto 0 auto;
+}
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0097a7;
+  margin-top: 0;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  color: #16a34a;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+p {
+  font-size: 1.06rem;
+  margin-top: 8px;
+  margin-bottom: 7px;
+}
+.card > .card {
+  /* Inner cards for stats */
+  background: #f8fafc;
+  border: 1px solid #e1e5ea;
+  box-shadow: none;
+  border-radius: 13px;
+  padding: 18px 16px 12px 18px;
+  margin-bottom: 0;
+  min-width: 180px;
+  transition: box-shadow 0.18s, border 0.18s;
+}
+.card > .card:hover {
+  box-shadow: 0 2px 8px #0097a728, 0 0 0 1.5px #0097a7;
+  border: 1.5px solid #0097a7;
+  background: #e6fcff;
+}
+
+a {
+  color: #0097a7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.16s, border-bottom 0.16s;
+  border-bottom: 1px dashed #b2ebf2;
+  padding-bottom: 1.5px;
+}
+a:hover {
+  color: #006471;
+  border-bottom: 1.5px solid #16a34a;
+  background: #eaf6f9;
+  border-radius: 3px;
+}
+@media (max-width: 850px) {
+  section.card {
+    padding: 15px 2vw 16px 2vw;
+    max-width: 99vw;
+  }
+  .card > .card {
+    padding: 14px 5vw 9px 6vw;
+    min-width: 130px;
+  }
+  h2 { font-size: 1.11rem; }
+}
+@media (max-width: 600px) {
+  .card > .card, .card > .card:not(:last-child) {
+    flex: 100%;
+    margin-bottom: 16px;
+    min-width: 120px;
+  }
+  div[style*="display:flex"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}

@@ -1,5 +1,5 @@
 <?php
-$pageCss = '/clinic-booking/assets/css/pages/staff_add_doctor.css';
+$pageCss = '/assets/css/pages/staff_add_doctor.css';
 require_once __DIR__ . '/../backend/db.php';
 require_once __DIR__ . '/../backend/auth.php';
 require_role('staff');

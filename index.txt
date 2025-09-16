@@ -29,3 +29,4 @@ require __DIR__ . '/backend/db.php';
 </body>
 </html>
 
+<!<link rel="stylesheet" href="<?= $base ?>/assets/css/style.css" /> 
