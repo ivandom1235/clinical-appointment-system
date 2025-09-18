@@ -5,7 +5,7 @@ require_once __DIR__ . '/../backend/auth.php';
 require_role('patient');
 require_once __DIR__ . '/../partials/header.php';
 ?>
-<!-- Make PHP $base available to JS -->
+
 <script>
   window.APP_BASE = "<?= $base ?>";
 </script>
@@ -76,7 +76,6 @@ require_once __DIR__ . '/../partials/header.php';
           return;
         }
 
-        // render slot buttons (POST to book_handler.php)
         slotsDiv.innerHTML = slots.map(t => `
           <form method="POST" action="${window.APP_BASE}/backend/book_handler.php" style="display:inline-block;margin:5px;">
             <input type="hidden" name="doctor_id" value="${doctor}">
