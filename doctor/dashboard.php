@@ -58,7 +58,7 @@ require_once __DIR__ . '/../partials/header.php';
 <section class=" card">
   <h2>Doctor Dashboard</h2>
   <?php if (!empty($_GET['updated'])): ?>
-    <p style="color:#22c55e;">✅ Status updated.</p>
+    <p style="color:#22c55e;"> Status updated.</p>
   <?php endif; ?>
 
   <?php if ($error): ?>
