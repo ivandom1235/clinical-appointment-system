@@ -37,7 +37,7 @@ $appts = $q->fetchAll();
 <section class="card">
   <h2>Welcome, <?= htmlspecialchars($_SESSION['name']) ?></h2>
   <?php if (!empty($_GET['booked'])): ?>
-  <p style="color:#22c55e;">✅ Appointment booked.</p>
+  <p style="color:#22c55e;"> Appointment booked.</p>
 <?php endif; ?>
 
   <p>Your upcoming appointments:</p>
