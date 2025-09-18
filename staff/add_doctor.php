@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../partials/header.php';
 ?>
 <section class="card">
-  <h2>➕ Add Doctor</h2>
+  <h2> Add Doctor</h2>
 
   <?php if ($success): ?>
     <p style="color:#22c55e;"><?= $success ?></p>

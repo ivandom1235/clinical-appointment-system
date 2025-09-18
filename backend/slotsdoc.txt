@@ -1,0 +1,51 @@
+/*
+|--------------------------------------------------------------------------
+| slots.php — Fetch Available Appointment Slots (AJAX API)
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Acts as an API endpoint for the appointment booking feature.
+| - Returns a JSON array of all available appointment time slots for a given
+|   doctor on a selected date, based on the doctor's schedule and existing bookings.
+| - Used by the frontend (via JavaScript/AJAX) to show users live slot availability
+|   when booking an appointment.
+|
+| Features & Best Practices:
+| - Uses PDO prepared statements for all database queries (prevents SQL injection).
+| - Validates and sanitizes all incoming input (doctor_id and date).
+| - Handles cases where the doctor or date is not provided, or the doctor has
+|   no schedule that day, by returning an empty JSON array.
+| - Converts start and end times to Unix timestamps for easy slot generation.
+| - Checks for already booked slots and excludes them from the returned list.
+| - Returns times in "HH:MM" 24-hour format for user-friendly display.
+| - Sets proper HTTP Content-Type header for JSON response.
+|
+| Syntax & Functions Used:
+| - require_once                   : Loads the shared database connection.
+| - $_GET                          : Retrieves query parameters from the URL.
+| - intval(), strtotime(), date()  : Safely handle numbers, parse/format dates and times.
+| - prepare(), execute(), fetch(), fetchAll() : PDO methods for DB access.
+| - array_column()                 : Extracts specific columns from multi-dimensional arrays.
+| - for loop, if, in_array()       : Standard PHP control structures and logic.
+| - json_encode()                  : Serializes PHP arrays as JSON.
+| - header()                       : Sends HTTP headers.
+|
+| Usage:
+| - Expects two query parameters: doctor_id (integer), and date (YYYY-MM-DD).
+| - On valid input, finds the doctor's schedule for that weekday.
+| - Generates time slots from start to end, in increments of the schedule's slot size.
+| - Excludes slots already booked for that doctor on that date.
+| - Returns a JSON array of free slot times to the caller (usually JavaScript).
+|
+| Security Note:
+| - All SQL queries are parameterized.
+| - All user input is type-checked and sanitized.
+| - No sensitive data is exposed; only times are returned.
+|
+| Example Response:
+|   ["09:00", "09:30", "10:00", ...]
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

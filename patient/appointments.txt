@@ -1,0 +1,46 @@
+/*
+|--------------------------------------------------------------------------
+| patient_appointments.php — Patient Appointment History & Cancel Page
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Displays a list of all appointments for the logged-in patient, most recent first.
+| - Allows patients to cancel future booked appointments with confirmation.
+| - Provides clear feedback messages after actions (e.g., successful cancellation).
+| - Ensures every patient has a profile record in the database.
+|
+| Features & Workflow:
+| - Uses PDO for all database operations, with prepared statements for security.
+| - Session and role-based access control: Only authenticated patients can access.
+| - On page load, fetches or creates the patient's profile.
+| - Fetches all appointments for the patient, joining doctor and user tables to get doctor names.
+| - For each appointment:
+|     - Displays date, time, doctor, status, and (if applicable) a cancel action.
+|     - Only future 'booked' appointments can be cancelled; past or non-booked are shown as inactive.
+|     - Cancellation is performed via a POST form to cancel_handler.php with a confirmation prompt.
+| - All output is escaped with htmlspecialchars() to prevent XSS.
+| - Uses a success query parameter (?cancelled=1) to show feedback after cancellation.
+|
+| Syntax & Functions Used:
+| - require_once, __DIR__         : Includes shared backend and layout files.
+| - $_SESSION, $_GET              : PHP superglobals for session and URL parameters.
+| - prepare(), execute(), fetchColumn(), fetchAll() : PDO methods for DB operations.
+| - foreach, if, else             : PHP control structures for logic.
+| - date(), substr(), htmlspecialchars() : For formatting, sanitization, and safe output.
+| - JavaScript confirm()          : Shows a confirmation dialog before cancellation.
+|
+| Usage:
+| - Patient views this page to see their appointment history.
+| - If there are no appointments, a booking link is offered.
+| - For future, booked appointments, a cancel button is provided.
+| - When cancelling, the form POSTs to backend/cancel_handler.php for processing.
+|
+| Security Note:
+| - All queries are parameterized and outputs are sanitized.
+| - Only authenticated and authorized patients can access or act on this page.
+| - Cancellations require explicit user confirmation (to prevent accidental clicks).
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

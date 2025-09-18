@@ -48,3 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </section>
 
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>
+

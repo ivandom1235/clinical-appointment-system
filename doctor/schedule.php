@@ -29,7 +29,7 @@ require_once __DIR__ . '/../partials/header.php';
 <section class="card">
   <h2>Weekly Schedule</h2>
   <?php if (!empty($_GET['saved'])): ?>
-    <p style="color:#22c55e;">✅ Schedule saved.</p>
+    <p style="color:#22c55e;"> Schedule saved.</p>
   <?php endif; ?>
 
   <form method="post" action="/backend/schedule_save.php">
@@ -58,15 +58,12 @@ require_once __DIR__ . '/../partials/header.php';
       </tbody>
     </table>
 
-    <div style="margin-top:12px;">
+    <div>
       <button type="submit">Save Schedule</button>
-      <a href="/clinic-booking/doctor/dashboard.php" style="margin-left:8px;">Back</a>
+      <a href="/doctor/dashboard.php">Back</a>
     </div>
   </form>
 
-  <p style="margin-top:12px; opacity:.85;">
-    <small><b>Notes:</b> Day index uses PHP <code>date('w')</code> mapping: 0=Sun … 6=Sat.  
-    Patient booking pulls from this schedule and hides already booked slots.</small>
-  </p>
+  
 </section>
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>

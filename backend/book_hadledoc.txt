@@ -1,0 +1,49 @@
+/*
+|--------------------------------------------------------------------------
+| book_handler.php — Appointment Booking Handler
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Processes the final step in booking an appointment by an authenticated patient.
+| - Receives POST data with doctor ID, date, time, and (optionally) reason for visit.
+| - Validates all required input and ensures only patients can access.
+| - Checks/gets the patient ID from the current session.
+| - Attempts to insert a new appointment into the database with "booked" status.
+| - If booking is successful, redirects patient to their dashboard with a success message.
+| - If the slot is already taken (unique constraint violation), displays a styled error page,
+|   letting the patient know and prompting them to try another slot.
+| - Rethrows any other unexpected database errors.
+|
+| Features & Best Practices:
+| - Uses require_role('patient') for strict role-based access control.
+| - Uses PDO prepared statements for all database operations (prevents SQL injection).
+| - Validates all input, handles missing/invalid fields gracefully.
+| - Handles database errors and user feedback in a user-friendly way.
+| - Returns styled HTML with a "Go Back" option if the selected slot is already booked.
+| - Redirects on success using the POST-Redirect-GET pattern to avoid duplicate submissions.
+|
+| Syntax & Functions Used:
+| - require_once              : Includes database and authentication modules.
+| - $_POST, $_SESSION         : PHP superglobals for form data and session variables.
+| - intval(), trim()          : Type casting and input sanitization.
+| - prepare(), execute(), fetchColumn() : PDO methods for DB access.
+| - try-catch, throw          : Handles and propagates exceptions.
+| - header(), exit            : Redirects and terminates script execution.
+| - Custom HTML/CSS           : Friendly error feedback for users.
+|
+| Usage:
+| - Patient selects doctor, date, and slot on booking page.
+| - Submits the booking form (POST) to book_handler.php.
+| - This script checks input, checks patient ID, and tries to book the slot.
+| - On success, redirects to dashboard with ?booked=1.
+| - If slot is taken, shows an error message and a "Go Back" button.
+|
+| Security Note:
+| - All SQL is parameterized.
+| - Only authenticated patients can access this handler.
+| - No sensitive errors or database messages are exposed to end-users.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

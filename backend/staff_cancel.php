@@ -27,7 +27,7 @@ try {
   } catch (Throwable $e) {}
 
   $pdo->commit();
-  header("Location: /clinic-booking/staff/appointments.php?date=" . urlencode($redir) . "&cancelled=1");
+  header("Location: /staff/appointments.php?date=" . urlencode($redir) . "&cancelled=1");
   exit;
 } catch (Throwable $e) {
   $pdo->rollBack();

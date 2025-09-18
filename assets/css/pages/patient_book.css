@@ -98,11 +98,3 @@ body {
   background: #388e3c;
 }
 
-@media (max-width: 600px) {
-  .card {
-    padding: 16px 10px;
-  }
-  .container {
-    padding: 0 4px;
-  }
-}

@@ -1,5 +1,5 @@
 <?php
-$pageCss = '/clinic-booking/assets/css/pages/staff_doctors.css';
+$pageCss = '/assets/css/pages/staff_doctors.css';
 require_once __DIR__ . '/../backend/db.php';
 require_once __DIR__ . '/../backend/auth.php';
 require_role('staff');
@@ -32,8 +32,8 @@ require_once __DIR__ . '/../partials/header.php';
     </table>
   <?php endif; ?>
   <p style="margin-top:12px;">
-    <a href="/clinic-booking/staff/add_doctor.php">➕ Add Doctor</a> ·
-    <a href="/clinic-booking/staff/dashboard.php">Back</a>
+    <a href="/staff/add_doctor.php"> Add Doctor</a> ·
+    <a href="/staff/dashboard.php">Back</a>
   </p>
 </section>
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>

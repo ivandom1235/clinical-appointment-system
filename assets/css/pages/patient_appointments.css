@@ -98,28 +98,3 @@ em {
     color: #64748b;
 }
 
-@media (max-width: 600px) {
-    .card {
-        padding: 16px 6px;
-    }
-    table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-    }
-    thead {
-        display: none;
-    }
-    tbody td {
-        padding: 10px 4px;
-        border-bottom: 1px solid #e5e7eb;
-        position: relative;
-    }
-    tbody td:before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: #64748b;
-        display: block;
-        margin-bottom: 2px;
-        font-size: 0.95rem;
-    }
-}

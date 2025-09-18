@@ -7,7 +7,7 @@ $DB_HOST = '127.0.0.1';
 $DB_PORT = '3306';
 $DB_NAME = 'clinic';
 $DB_USER = 'clinic_user';   // or 'root'
-$DB_PASS = 'supersecurepw'; // or '' if Laragon root with no password
+$DB_PASS = 'supersecurepw'; 
 
 $dsn = "mysql:host={$DB_HOST};port={$DB_PORT};dbname={$DB_NAME};charset=utf8mb4";
 

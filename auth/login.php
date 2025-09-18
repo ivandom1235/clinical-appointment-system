@@ -46,4 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </form>
 </section>
 
+
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>
+

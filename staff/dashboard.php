@@ -1,6 +1,6 @@
 <?php
 
-$pageCss = '/assets/css/pages/doctor_schedule.css';
+$pageCss = '/assets/css/pages/staff_schedule.css';
 require_once __DIR__ . '/../backend/db.php';
 require_once __DIR__ . '/../backend/auth.php';
 require_role('staff');
@@ -18,17 +18,17 @@ require_once __DIR__ . '/../partials/header.php';
 
   <div style="display:flex; gap:16px; flex-wrap:wrap;">
     <div class="card" style="flex:1;">
-      <h3>📋 Patients</h3>
+      <h3> Patients</h3>
       <p>Total: <?= (int)$totalPatients ?></p>
     </div>
     <div class="card" style="flex:1;">
-      <h3>👨‍⚕️ Doctors</h3>
+      <h3> Doctors</h3>
       <p>Total: <?= (int)$totalDoctors ?></p>
-      <p><a href="doctors.php">View Doctors</a> · <a href="add_doctor.php">➕ Add Doctor</a></p>
+      <p><a href="doctors.php">View Doctors</a> · <a href="add_doctor.php">Add Doctor</a></p>
 
     </div>
     <div class="card" style="flex:1;">
-      <h3>📅 Appointments</h3>
+      <h3> Appointments</h3>
       <p>Total: <?= (int)$totalAppts ?></p>
       <p><a href="appointments.php?date=<?= date('Y-m-d') ?>">View Today</a></p>
 

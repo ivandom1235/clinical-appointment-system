@@ -112,10 +112,3 @@ p[style*="#ef4444"] {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
-  .card {
-    max-width: 97vw;
-    padding: 12px 3vw 18px 3vw;
-  }
-  form { max-width: 99vw; }
-}

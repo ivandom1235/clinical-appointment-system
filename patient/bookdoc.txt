@@ -1,0 +1,54 @@
+/*
+|--------------------------------------------------------------------------
+| patient_book.php — Patient Appointment Booking Page
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Allows logged-in patients to book a new appointment by selecting a doctor,
+|   choosing a date, and picking from available time slots.
+| - Dynamically fetches doctor options from the database and lists their specialties.
+| - Uses JavaScript (AJAX) to load available slots for the selected doctor and date
+|   without refreshing the page.
+| - Provides slot selection as individual forms; submitting a slot POSTs to
+|   book_handler.php to create the appointment.
+|
+| Features & Best Practices:
+| - Uses PDO for all database queries, ensuring security (prevents SQL injection).
+| - Utilizes session and role-based access control (require_role('patient')) so
+|   only authenticated patients can book appointments.
+| - Fetches doctors and specialties from the database, escaping output with
+|   htmlspecialchars() to prevent XSS.
+| - Uses a date picker limited to today or future dates to prevent invalid bookings.
+| - Leverages modern JavaScript (fetch, async/await) for smooth user experience.
+| - Provides clear feedback for user actions (e.g., loading, errors, empty results).
+| - Renders each available slot as a POST form to book_handler.php for secure booking.
+| - Passes base URL from PHP to JavaScript using window.APP_BASE, for compatibility
+|   with deployments in subfolders or custom paths.
+|
+| Syntax & Functions Used:
+| - <?php ... ?>                         : PHP code blocks.
+| - require_once                         : Includes shared backend/frontend files.
+| - $_SESSION, $_POST, $_GET             : PHP superglobals for session and input data.
+| - htmlspecialchars(), trim()           : Output escaping and string trimming.
+| - PDO->query(), foreach                : Fetches and loops through doctor records.
+| - JavaScript: document.getElementById, fetch, async/await, event listeners.
+| - JavaScript: JSON.parse(), try-catch  : Robust JSON and error handling.
+| - JavaScript: DOMContentLoaded         : Ensures DOM is ready before attaching events.
+| - Dynamic form rendering in JS         : Submits bookings with hidden fields.
+|
+| Usage:
+| - User lands on the booking page and selects a doctor and date.
+| - Clicks "Find Slots" to trigger JavaScript, which calls backend/slots.php via AJAX.
+| - Available slots are displayed as clickable POST forms.
+| - User clicks a slot to submit the booking, which is handled by book_handler.php.
+| - Error and loading messages guide the user at every step.
+|
+| Security Note:
+| - All server and user-generated output is escaped before display.
+| - All booking submissions are done via POST to backend handlers.
+| - No sensitive logic or data is exposed in JavaScript.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

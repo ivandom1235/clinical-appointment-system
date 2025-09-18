@@ -1,0 +1,56 @@
+/*
+|--------------------------------------------------------------------------
+| register.php — Patient Registration Script
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Provides a registration form for new patients to create an account.
+| - Handles POST submissions by validating input, hashing passwords, and
+|   inserting the new user into the database with the 'patient' role.
+| - Shows error messages for missing fields, duplicate emails, or DB issues.
+|
+| Best Practices & Enhancements:
+| - Uses PDO prepared statements for all database queries (prevents SQL injection).
+| - Uses password_hash() for securely storing user passwords (never saves plaintext).
+| - Redirects to login.php?ok=1 after successful registration using:
+|       header("Location: login.php?ok=1");
+|   This follows the POST-Redirect-GET (PRG) pattern and improves user experience.
+| - After redirect, the login page displays a success message if ?ok=1 is present in the URL,
+|   guiding the user to login immediately and confirming successful registration.
+| - Escapes all user-provided and error messages using htmlspecialchars() to prevent XSS.
+| - Loads a shared header for consistent UI, and applies page-specific CSS.
+|
+| Discussion:
+| - Instead of showing the success message on the registration page itself,
+|   redirecting to the login page with a success flag (?ok=1) ensures the user
+|   knows what to do next and avoids confusion or accidental duplicate registration.
+|   This is considered better user experience and is a standard in modern web apps.
+|
+| Syntax & Keywords Used:
+| - <?php ... ?>           : PHP opening/closing tags.
+| - require_once           : Includes shared resources (db.php, header.php).
+| - if, else               : Conditional logic.
+| - $_SERVER, $_POST, $_SESSION : Superglobal arrays for request/form/session data.
+| - trim()                 : Removes whitespace from input.
+| - password_hash()        : Creates a secure hash of the password.
+| - prepare(), execute()   : PDO methods for safe DB operations.
+| - try-catch              : Handles database exceptions gracefully.
+| - header("Location: ...") : Sends an HTTP redirect to the browser.
+| - exit                   : Stops script execution after redirect.
+| - empty(), htmlspecialchars() : Input validation and safe HTML output.
+|
+| Usage:
+| - User fills out the registration form and submits.
+| - PHP checks for valid input, hashes the password, inserts into the database.
+| - On success: redirects to login.php?ok=1, where the login page shows a
+|   success message and prompts for login.
+| - On failure: displays an error message on the registration page.
+|
+| Security Note:
+| - All user input is validated and sanitized before processing or display.
+| - Never display database errors or sensitive information to the user.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

@@ -79,14 +79,4 @@ a:hover {
   }
   h2 { font-size: 1.11rem; }
 }
-@media (max-width: 600px) {
-  .card > .card, .card > .card:not(:last-child) {
-    flex: 100%;
-    margin-bottom: 16px;
-    min-width: 120px;
-  }
-  div[style*="display:flex"] {
-    flex-direction: column !important;
-    gap: 10px !important;
-  }
-}
+

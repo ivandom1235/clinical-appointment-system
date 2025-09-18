@@ -1,0 +1,46 @@
+/*
+|--------------------------------------------------------------------------
+| book.php <--> book_handler.php — Booking Interaction Documentation
+|--------------------------------------------------------------------------
+|
+| Overview:
+| - This documentation explains the workflow and connection between the
+|   patient booking page (book.php) and the backend appointment handler
+|   (book_handler.php) in the clinic booking system.
+|
+| Workflow:
+| 1. The authenticated patient visits book.php to book an appointment.
+|    - Patient selects a doctor and date.
+|    - Available slots are loaded dynamically using JavaScript and slots.php.
+|
+| 2. For each free slot, book.php renders a mini HTML form with hidden inputs:
+|      <form method="POST" action="/backend/book_handler.php">
+|        <input type="hidden" name="doctor_id" value="...">
+|        <input type="hidden" name="date" value="...">
+|        <input type="hidden" name="time" value="...">
+|        <button type="submit">[slot time]</button>
+|      </form>
+|
+| 3. When a patient clicks a slot button, the browser sends a POST request to
+|    book_handler.php with doctor, date, and time as parameters.
+|
+| 4. book_handler.php validates the input, checks the session for patient authentication,
+|    verifies the patient profile, and attempts to create the booking in the database.
+|    - On success, redirects the user to the dashboard with a success message (?booked=1).
+|    - On conflict (slot already booked), shows a user-friendly error message and offers
+|      a way to try again.
+|
+| Rationale:
+| - This split design (frontend in book.php, backend in book_handler.php) ensures that:
+|    - Sensitive operations (database writing, double-booking checks) are only performed server-side.
+|    - The user experience is smooth: selecting slots is interactive, and feedback is immediate.
+|    - The system remains secure, using session authentication and prepared statements.
+|
+| Security Note:
+| - All booking actions are performed through server-side validation in book_handler.php.
+| - Only authenticated patients can submit bookings.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

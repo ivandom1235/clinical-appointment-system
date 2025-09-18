@@ -84,7 +84,7 @@ button, .btn {
   box-shadow: 0 1px 4px #0001;
   transition: background 0.17s;
 }
-button:hover, .btn:hover {
+button:hover, .btn:hover, a:hover {
   background: #007c91;
 }
 form[method="POST"] {
@@ -113,16 +113,20 @@ p[style*="#d32f2f"] { /* red error */
   margin-top: 36px;
 }
 
-@media (max-width: 700px) {
-  .card, .dsched.card {
-    padding: 13px 2vw 18px 2vw;
-    max-width: 98vw;
-    font-size: 0.96rem;
-  }
-  th, td {
-    padding: 9px 6px;
-    font-size: 0.97rem;
-  }
-  h2 { font-size: 1.22rem; }
-  h3 { font-size: 1.07rem; }
+a{
+  background: #0097a7;
+  color: #fff;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px #0001;
+  transition: background 0.17s;
+  text-decoration: none;
+
+
 }

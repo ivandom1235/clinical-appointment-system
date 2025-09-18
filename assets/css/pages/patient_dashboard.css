@@ -75,33 +75,3 @@ tbody td:nth-child(4) {
     color: #22c55e;
 }
 
-@media (max-width: 700px) {
-    .card {
-        padding: 1rem;
-        max-width: 98vw;
-    }
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-    thead {
-        display: none;
-    }
-    tbody td {
-        position: relative;
-        padding-left: 50%;
-        border-bottom: 1px solid #e5e7eb;
-    }
-    tbody td:before {
-        position: absolute;
-        left: 1rem;
-        top: 0.75rem;
-        width: 45%;
-        white-space: nowrap;
-        font-weight: 500;
-        color: #6b7280;
-    }
-    tbody td:nth-child(1):before { content: "Date"; }
-    tbody td:nth-child(2):before { content: "Time"; }
-    tbody td:nth-child(3):before { content: "Doctor"; }
-    tbody td:nth-child(4):before { content: "Status"; }
-}

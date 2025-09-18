@@ -81,8 +81,8 @@ a {
   transition: background 0.15s;
 }
 a:hover {
-  background: #eaf6f9;
-  color: #007c91;
+  color: #eaf6f9;
+  background: #007c91;
   text-decoration: none;
 }
 
@@ -124,7 +124,7 @@ form[method="POST"] {
   display: inline;
 }
 button[type="submit"] {
-  background: #ef4444;
+  background: var(--accent);
   color: #fff;
   border-radius: 6px;
   font-size: 1em;
@@ -151,8 +151,3 @@ p[style*="#22c55e"] {
 }
 
 /* Responsive for mobile */
-@media (max-width: 700px) {
-  .card { padding: 12px 2vw 14px 2vw; max-width: 99vw; }
-  th, td { padding: 7px 4px; font-size: 0.97rem; }
-  form { flex-direction: column; gap: 9px; align-items: flex-start; }
-}

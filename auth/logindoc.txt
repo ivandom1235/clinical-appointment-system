@@ -1,0 +1,61 @@
+/*
+|--------------------------------------------------------------------------
+| login.php — User Login Script
+|--------------------------------------------------------------------------
+|
+| Purpose (Before Improvements):
+| - Displayed a login form for users (patients, doctors, staff).
+| - Handled POST submission by checking email and password.
+| - Set session variables upon successful login, and redirected to dashboard.
+| - Showed an error message for invalid credentials.
+|
+| Enhancements / Best Practices Added:
+| - Uses PDO prepared statements for secure database queries (prevents SQL injection).
+| - Utilizes password hashing and password_verify() for authentication (never stores plain passwords).
+| - Remembers the user's entered email if login fails (improves user experience).
+| - Shows clear success and error messages using URL query params and PHP variables.
+| - Escapes all user-provided values using htmlspecialchars() to prevent Cross-Site Scripting (XSS).
+| - Handles role-based redirection so patients, doctors, and staff are taken to their respective dashboards.
+| - Loads shared header for consistent UI.
+|
+| PHP Syntax & Keywords Used:
+| -          : PHP opening and closing tags — tells server to interpret code as PHP.
+| - if, elseif, else     : Conditional statements for logic flow.
+| - ===                  : Strict comparison operator (checks value and type).
+| - =                    : Assignment operator, stores values in variables.
+| - $_SERVER             : Superglobal array, contains info about request (like HTTP method).
+| - $_POST               : Superglobal array, contains form data sent by POST.
+| - $_SESSION            : Superglobal array, stores session (login) data across requests.
+| - $_GET                : Superglobal array, contains query params from the URL.
+| - trim()               : Removes whitespace from the beginning and end of a string.
+| - empty()              : Checks if a variable or array is empty.
+| - prepare(), execute() : PDO methods to safely run database queries with parameters.
+| - fetch()              : Gets result row as associative array from DB.
+| - password_verify()    : Checks entered password against hashed password from DB.
+| - htmlspecialchars()   : Escapes special HTML characters for safe output.
+| - header()             : Sends HTTP headers; used for page redirection.
+| - exit                 : Stops script execution immediately.
+| - isset()              : Checks if a variable is set.
+| - ?:, ??               : Null coalescing (??) and ternary (?:) operators for defaults/short logic.
+| -            : Shorthand for , used to print values in HTML.
+|
+| Usage:
+| - Users submit the login form (email & password).
+| - On POST: Checks credentials, sets session, redirects by role.
+| - On error: Shows a safe error message, retains entered email.
+| - After successful registration, shows success message if ?ok=1 in URL.
+|
+| Dependencies:
+| - db.php for database connection.
+| - auth.php for session handling.
+| - header.php for page structure and styles.
+|
+| Security Note:
+| - Always escape user input/output in HTML.
+| - Never display raw error messages or expose sensitive data.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/
+

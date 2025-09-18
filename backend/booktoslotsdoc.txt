@@ -1,0 +1,51 @@
+/*
+|--------------------------------------------------------------------------
+| Appointment Booking Flow Documentation
+|--------------------------------------------------------------------------
+|
+| This documentation explains the integrated workflow for booking appointments,
+| connecting the patient booking page (patient_book.php), the slots API
+| (slots.php), and the booking handler (book_handler.php).
+|
+| Step-by-Step Booking Flow:
+| 1. The authenticated patient accesses patient_book.php to book an appointment.
+|    - Selects a doctor from a dropdown (options are loaded from the database).
+|    - Picks a date (cannot select past dates).
+|
+| 2. Patient clicks the "Find Slots" button.
+|    - JavaScript reads the selected doctor and date.
+|    - JavaScript sends an AJAX GET request to slots.php with doctor_id and date.
+|
+| 3. slots.php receives the request and processes it:
+|    - Validates doctor and date input.
+|    - Looks up the doctor's schedule and existing booked appointments for that day.
+|    - Generates all available slots, excluding those already booked.
+|    - Returns a JSON array of available slot times (e.g., ["10:00", "10:30", ...]).
+|
+| 4. JavaScript in patient_book.php receives the JSON array:
+|    - If empty, displays "No free slots that day."
+|    - Otherwise, renders each slot as an individual POST form/button for the patient to choose.
+|
+| 5. When the patient clicks a slot button:
+|    - The form submits a POST request to book_handler.php with doctor_id, date, and time.
+|
+| 6. book_handler.php processes the booking:
+|    - Validates patient, doctor, date, and slot.
+|    - Double-checks the slot is still available.
+|    - If valid, inserts the new appointment into the database.
+|    - Redirects the user with a success indicator (e.g., ?booked=1).
+|
+| 7. The patient's dashboard or booking page shows a confirmation message that
+|    the appointment was booked successfully.
+|
+| Design Rationale & Best Practices:
+| - AJAX ensures that slot availability is updated in real time, improving user experience.
+| - Only valid and authenticated patients can access the booking page and book appointments.
+| - All data is validated and sanitized on both client and server sides.
+| - Uses prepared statements and secure output escaping throughout the flow.
+| - The POST-Redirect-GET pattern prevents duplicate bookings on page refresh.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

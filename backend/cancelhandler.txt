@@ -1,0 +1,41 @@
+/*
+|--------------------------------------------------------------------------
+| cancel_handler.php — Patient Appointment Cancellation Handler
+|--------------------------------------------------------------------------
+|
+| Purpose:
+| - Handles the secure cancellation of appointments by patients.
+| - Checks that the appointment exists and belongs to the logged-in patient.
+| - Updates the appointment’s status to 'cancelled' in the database.
+| - Optionally logs the cancellation reason in a separate table (if it exists).
+| - Uses DB transactions for consistency; rolls back on any error.
+| - Redirects user to the appointments page with a success message on completion.
+|
+| Features & Best Practices:
+| - Uses PDO prepared statements and transactions for all DB operations.
+| - Verifies patient ownership of appointment before proceeding.
+| - Returns appropriate HTTP status codes for missing/forbidden actions.
+| - Uses a try-catch block to handle potential database/table errors gracefully.
+| - Protects against tampering or unauthorized cancellation attempts.
+|
+| Syntax & Functions Used:
+| - require_once           : Includes database and authentication modules.
+| - $_POST, $_SESSION      : PHP superglobals for form data and session.
+| - prepare(), execute(), fetch() : PDO methods for DB operations.
+| - beginTransaction(), commit(), rollBack() : Transaction control for DB consistency.
+| - header(), exit         : Redirects and terminates script execution.
+| - http_response_code()   : Sets HTTP response status for error handling.
+|
+| Usage:
+| - Triggered when a patient submits a cancellation request from the appointments page.
+| - If successful, redirects back to the list with a success message.
+| - If unauthorized or error, shows an appropriate error message.
+|
+| Security Note:
+| - All actions require patient authentication and appointment ownership.
+| - All SQL is parameterized and outputs are sanitized.
+|
+| Author: [Your Name]
+| Date: [Date]
+|
+*/

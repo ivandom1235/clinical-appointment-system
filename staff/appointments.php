@@ -31,11 +31,11 @@ require_once __DIR__ . '/../partials/header.php';
       <input type="date" name="date" value="<?= htmlspecialchars($day) ?>">
     </label>
     <button type="submit">Load</button>
-    <a href="/clinic-booking/staff/dashboard.php" style="margin-left:8px;">Back</a>
+    <a href="/staff/dashboard.php" style="margin-left:8px;">Back</a>
   </form>
 
   <?php if (!empty($_GET['cancelled'])): ?>
-    <p style="color:#22c55e;">✅ Appointment cancelled.</p>
+    <p style="color:#22c55e;"> Appointment cancelled.</p>
   <?php endif; ?>
 
   <?php if (!$rows): ?>
@@ -48,7 +48,6 @@ require_once __DIR__ . '/../partials/header.php';
           <th>Doctor</th>
           <th>Patient</th>
           <th>Status</th>
-          <th>Reason</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -59,10 +58,10 @@ require_once __DIR__ . '/../partials/header.php';
           <td>Dr. <?= htmlspecialchars($r['doctor_name']) ?></td>
           <td><?= htmlspecialchars($r['patient_name']) ?></td>
           <td><?= htmlspecialchars($r['status']) ?></td>
-          <td><?= htmlspecialchars($r['reason'] ?? '') ?></td>
+
           <td>
             <?php if ($r['status']==='booked'): ?>
-              <form method="POST" action="/clinic-booking/backend/staff_cancel.php" onsubmit="return confirm('Cancel this appointment?');" style="display:inline;">
+              <form method="POST" action="/backend/staff_cancel.php" onsubmit="return confirm('Cancel this appointment?');" style="display:inline;">
                 <input type="hidden" name="appointment_id" value="<?= (int)$r['id'] ?>">
                 <input type="hidden" name="reason" value="staff_cancel">
                 <input type="hidden" name="redirect_date" value="<?= htmlspecialchars($day) ?>">
